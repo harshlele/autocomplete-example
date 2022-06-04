@@ -27,6 +27,7 @@ function App() {
       setOptions(pred);
 
     });
+
   }
 
   const getSelectedPlaceInfo = (place) => {
@@ -54,6 +55,56 @@ function App() {
     getAutocompleteSuggestions(inputVal);
   }, [inputVal]);
 
+  /**
+   * {
+        "description": "4500 68th Street Southeast, Caledonia, MI, USA",
+        "matched_substrings": [
+            {
+                "length": 4,
+                "offset": 0
+            }
+        ],
+        "place_id": "ChIJJ1CNhJlLGIgRalC9XvFC9Zc",
+        "reference": "ChIJJ1CNhJlLGIgRalC9XvFC9Zc",
+        "structured_formatting": {
+            "main_text": "4500 68th Street Southeast",
+            "main_text_matched_substrings": [
+                {
+                    "length": 4,
+                    "offset": 0
+                }
+            ],
+            "secondary_text": "Caledonia, MI, USA"
+        },
+        "terms": [
+            {
+                "offset": 0,
+                "value": "4500"
+            },
+            {
+                "offset": 5,
+                "value": "68th Street Southeast"
+            },
+            {
+                "offset": 28,
+                "value": "Caledonia"
+            },
+            {
+                "offset": 39,
+                "value": "MI"
+            },
+            {
+                "offset": 43,
+                "value": "USA"
+            }
+        ],
+        "types": [
+            "street_address",
+            "geocode"
+        ]
+    }
+   */
+
   return (
     <div className="App">
       <header className="App-header">
@@ -76,8 +127,8 @@ function App() {
             getSelectedPlaceInfo(selOption);
           }}
         />
-        <div style={{ textAlign: 'left' }}>
-          <div style={{marginTop: '50px'}}>
+        <div style={{ textAlign: 'left', marginTop: '200px' }}>
+          <div style={{}}>
             Full address
           </div>
           <div style={{color: 'grey'}}>
@@ -93,7 +144,7 @@ function App() {
             Coordinates
           </div>
           <div style={{color: 'grey'}}>
-            {placeDetail?.geometry.location.lat()},{placeDetail?.geometry.location.lng()}
+            {placeDetail?.geometry?.location?.lat()},{placeDetail?.geometry?.location?.lng()}
           </div>
         </div>
 
